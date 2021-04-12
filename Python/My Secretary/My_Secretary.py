@@ -13,7 +13,6 @@ def create_soup(url):
 
 def today_weather():
     
-
     url = "https://www.google.com/search?q=weather&oq=weather&aqs=chrome..69i57.968j0j15&sourceid=chrome&ie=UTF-8"
     soup = create_soup(url)
 
@@ -36,9 +35,6 @@ def today_weather():
     print("Current temperature is {}°. (Min {}°, Max {}°)".format(curr_temp, min_temp, max_temp))
     print()
     print("Precipitation : {}, Humidity : {}, Wind : {}.".format(prec, humid, wind))
-    
-
-
 
 if __name__ == "__main__":
     today_weather()
