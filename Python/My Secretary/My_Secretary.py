@@ -50,12 +50,15 @@ def headline_news():
     
     print("[Today's headline news ({})]".format(now.strftime('%Y-%m-%d')))
 
-    headline = soup.find("span", attrs={"class":"cd__headline-icon-vid cnn-icon"})
-    for index, news in enumerate(headline):
-        title = news.find("a").get_text().strip() 
-        link = url + news.find("a")["href"]
-        print_news(index, title, link)
-    print()
+    headline = soup.find("span", attrs={"class":"cd__headline-text vid-left-enabled"})
+    print(headline)
+
+
+    # for index, news in enumerate(headline):
+    #     title = news.find("a").get_text().strip() 
+    #     link = url + news.find("a")["href"]
+    #     print_news(index, title, link)
+    # print()
 
 
 
