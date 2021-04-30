@@ -8,13 +8,20 @@ def datetimenow():
     now = datetime.now()
     return (now)
 
-
 def create_soup(url):
     headers = {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36"}
     res = requests.get(url, headers = headers)
     res.raise_for_status()
     soup = BeautifulSoup(res.text, "lxml")
     return(soup)
+
+def create_browser(url):
+    options = webdriver.ChromeOptions()
+    options.headless = True
+
+    browser = webdriver.Chrome("./chromedriver", options = options)
+    browser.get(url)
+    return (browser)
 
 def today_weather():
     now = datetimenow() 
@@ -45,13 +52,24 @@ def today_weather():
 def headline_news():
     now = datetimenow()
 
-    url = "https://www.cnn.com"
+    url = "https://www.cnn.com/"
+    browser = create_browser(url)
     soup = create_soup(url)
     
     print("[Today's headline news ({})]".format(now.strftime('%Y-%m-%d')))
 
-    headline = soup.find("span", attrs={"class":"cd__headline-text vid-left-enabled"})
-    print(headline)
+    news_1 = browser.find_element_by_xpath('//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a/h2').click()
+    firstnews = soup.find("h1", attrs={"class":"pg-headline"})
+    print(firstnews.get_text())
+
+
+
+
+    # headlines = soup.find("h2", attrs={"class":"banner-text screaming-banner-text banner-text-size--char-47"})
+    # print(headlines)
+    
+    # for headline in headlines:
+    #     print(headline.get_text())
 
 
     # for index, news in enumerate(headline):
@@ -60,7 +78,23 @@ def headline_news():
     #     print_news(index, title, link)
     # print()
 
+def IT_news():
+    pass
 
+def english_study():
+    now = datetimenow() 
+
+    url = "https://www.ted.com/"
+    soup = create_soup(url)
+    iframes = soup.find_all('iframe')
+
+    print("[Today's TED Talk ({})]".format(now.strftime('%Y-%m-%d')))
+
+
+    # TEDs = soup.find_all("div", attrs={"class":"slick-slide slick-active d:f flx-d:c a-i:s p-x:.4"})
+    
+    # for TED in TEDs:
+        # print(TED.get_text())
 
 
 
