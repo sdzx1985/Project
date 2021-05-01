@@ -1,8 +1,14 @@
 import re
 import requests
+import smtplib
+import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from datetime import datetime 
+from email.message import EmailMessage
+from email.mime.text import MIMEText
+from Account import *
+
 
 def datetimenow():
     now = datetime.now()
@@ -50,57 +56,76 @@ def today_weather():
 
 
 def headline_news():
-    now = datetimenow()
-
-    url = "https://www.cnn.com/"
-    browser = create_browser(url)
-    soup = create_soup(url)
-    
-    print("[Today's headline news ({})]".format(now.strftime('%Y-%m-%d')))
-
-    news_1 = browser.find_element_by_xpath('//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a/h2').click()
-    firstnews = soup.find("h1", attrs={"class":"pg-headline"})
-    print(firstnews.get_text())
-
-
-
-
-    # headlines = soup.find("h2", attrs={"class":"banner-text screaming-banner-text banner-text-size--char-47"})
-    # print(headlines)
-    
-    # for headline in headlines:
-    #     print(headline.get_text())
-
-
-    # for index, news in enumerate(headline):
-    #     title = news.find("a").get_text().strip() 
-    #     link = url + news.find("a")["href"]
-    #     print_news(index, title, link)
-    # print()
-
-def IT_news():
-    pass
-
-def english_study():
     now = datetimenow() 
 
-    url = "https://www.ted.com/"
+    url = "https://www.cnn.com/us"
+    browser = create_browser(url)
+
+    print("[Today's headline news ({})]".format(now.strftime('%Y-%m-%d')))
+    print()
+
+    soup = BeautifulSoup(browser.page_source, "html.parser")
+
+    headlines = soup.find_all("h3", class_='cd__headline', limit=3)
+
+    index = 1
+    for headline in headlines:
+        print("{}. ".format(index), headline.text.strip())
+        print("  Link : https://www.cnn.com" + headline.a.get('href').replace('//',' '))
+        index += 1
+    
+    print()
+    browser.quit()
+
+
+def IT_news():
+    now = datetimenow() 
+
+    url = "https://www.computerworld.com/news/"
+
+    print("[Today's IT issues ({})]".format(now.strftime('%Y-%m-%d')))
+    print()
+
     soup = create_soup(url)
-    iframes = soup.find_all('iframe')
+
+    news_list = soup.find("div", attrs={"class":"main-col"}).find_all("h3", limit=3)
+    
+    for index, news in enumerate(news_list):
+        a_idx = 0
+        a_tag = news.find_all("a")[a_idx]
+        title = a_tag.get_text().strip()
+        link = a_tag["href"]
+
+        print("{}. {}".format(index+1, title))
+        print("  Link : {}".format(link))
+
+    print()
+
+def ted_talk():
+    now = datetimenow() 
+
+    url = "https://www.ted.com/talks"
+    browser = create_browser(url)
 
     print("[Today's TED Talk ({})]".format(now.strftime('%Y-%m-%d')))
+    print()
 
+    soup = BeautifulSoup(browser.page_source, "html.parser")
 
-    # TEDs = soup.find_all("div", attrs={"class":"slick-slide slick-active d:f flx-d:c a-i:s p-x:.4"})
-    
-    # for TED in TEDs:
-        # print(TED.get_text())
+    teds = soup.find("div", class_='media__message')
 
+    print("Topic :", teds.a.get_text().strip())
+    print("Author :", teds.h4.get_text().strip())
+    print("  Link : https://www.ted.com" + teds.a.get('href').replace('//',' '))
 
-
+print()
 
 if __name__ == "__main__":
-    # today_weather()
+
+    today_weather()
     headline_news()
-    # IT_news()
-    # english_study()
+    IT_news()
+    ted_talk()
+
+        
+
