@@ -3,6 +3,12 @@ from random import *
 
 
 def setup(level):  # Level setting
+    # how long?
+    global display_time
+    display_time = 5 - (level // 3)
+    display_time = max(display_time, 1)
+
+    # how many number?
     number_count = (level // 3) + 5
     number_count = min(number_count, 20)  # Maximum number = 20
 
@@ -50,19 +56,48 @@ def display_start_screen():
 
 
 def display_game_screen():
-    for idx, rect in enumerate(number_buttons, start=1):
-        pygame.draw.rect(screen, GRAY, rect)
+    global hidden
 
-        # add number text
-        cell_text = game_font.render(str(idx), True, WHITE)
-        text_rect = cell_text.get_rect(center=rect.center)
-        screen.blit(cell_text, text_rect)
+    if not hidden:
+        elapsed_time = (pygame.time.get_ticks() -
+                        start_ticks) / 1000  # ms -> sec
+        if elapsed_time > display_time:
+            hidden = True
+
+    for idx, rect in enumerate(number_buttons, start=1):
+        if hidden:
+            # draw button
+            pygame.draw.rect(screen, WHITE, rect)
+        else:
+            # add number text
+            cell_text = game_font.render(str(idx), True, WHITE)
+            text_rect = cell_text.get_rect(center=rect.center)
+            screen.blit(cell_text, text_rect)
 
 
 def check_buttons(pos):
-    global start
-    if start_button.collidepoint(pos):
+    global start, start_ticks
+
+    if start:
+        check_number_buttons(pos)
+    elif start_button.collidepoint(pos):
         start = True
+        start_ticks = pygame.time.get_ticks()  # start timer
+
+
+def check_number_buttons(pos):
+    global hidden
+
+    for button in number_buttons:
+        if button.collidepoint(pos):
+            if button == number_buttons[0]:
+                print("correct")
+                del number_buttons[0]
+                if not hidden:
+                    hidden = True
+            else:
+                print("wrong")
+            break
 
 
 # Basic Frame
@@ -83,10 +118,15 @@ WHITE = (255, 255, 255)
 GRAY = (50, 50, 50)
 
 number_buttons = []  # playing button
+display_time = None  # the time that shows the numbers
+start_ticks = None  # time calculate
 
 # Start
 start = False
+# hidden numbers
+hidden = False
 
+# game setting
 setup(1)
 
 # Game Loop

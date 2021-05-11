@@ -51,18 +51,38 @@ def display_start_screen():
 
 def display_game_screen():
     for idx, rect in enumerate(number_buttons, start=1):
-        pygame.draw.rect(screen, GRAY, rect)
-
-        # add number text
-        cell_text = game_font.render(str(idx), True, WHITE)
-        text_rect = cell_text.get_rect(center=rect.center)
-        screen.blit(cell_text, text_rect)
+        if hidden:
+            # draw button
+            pygame.draw.rect(screen, WHITE, rect)
+        else:
+            # add number text
+            cell_text = game_font.render(str(idx), True, WHITE)
+            text_rect = cell_text.get_rect(center=rect.center)
+            screen.blit(cell_text, text_rect)
 
 
 def check_buttons(pos):
     global start
-    if start_button.collidepoint(pos):
+
+    if start:
+        check_number_buttons(pos)
+    elif start_button.collidepoint(pos):
         start = True
+
+
+def check_number_buttons(pos):
+    global hidden
+
+    for button in number_buttons:
+        if button.collidepoint(pos):
+            if button == number_buttons[0]:
+                print("correct")
+                del number_buttons[0]
+                if not hidden:
+                    hidden = True
+            else:
+                print("wrong")
+            break
 
 
 # Basic Frame
@@ -86,7 +106,10 @@ number_buttons = []  # playing button
 
 # Start
 start = False
+# hidden numbers
+hidden = False
 
+# game setting
 setup(1)
 
 # Game Loop
