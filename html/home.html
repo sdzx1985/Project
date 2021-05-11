@@ -10,15 +10,22 @@
     <title>Welcome! - My first website</title>
     <link href="styles.css" rel="stylesheet" />
     <style>
-      .btn {
-        padding: 5px;
-        border-radius: 5px;
+      :root {
+        --main-color: #489ee3;
+        --default-border: 1px solid var(--main-color);
       }
-      .teal {
-        background-color: teal;
+      body {
+        height: 1000vh;
+        margin: 50px;
       }
-      .hello {
-        background-color: tomato;
+      form {
+        border: var(--default-border)
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+      form:hover input:focus {
+        background-color: var(--main-color);
       }
     </style>
     <meta charset="utf-8" />
@@ -26,14 +33,12 @@
   </head>
 
   <body>
-    <span class="btn hello">hello</span>
-    <span class="btn teal">hello</span>
-    <span class="btn hello">hello</span>
-    <span class="btn teal">hello</span>
-    <span class="btn hello">hello</span>
-    <span class="btn teal">hello</span>
-    <span class="btn hello">hello</span>
-    <span class="btn teal">hello</span>
-    <span class="btn hello">hello</span>
+    <div>
+      <form>
+        <input type="text" name="" id="" />
+        <input type="text" name="" id="" />
+        <input type="text" name="" id="" />
+      </form>
+    </div>
   </body>
 </html>
