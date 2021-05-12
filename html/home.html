@@ -2,43 +2,34 @@
 
 <html lang="en">
   <head>
-    <link
-      rel="shortcut icon"
-      sizes="16x16 32x32 64x64"
-      href="https://nomadcoders.co/m.png"
-    />
-    <title>Welcome! - My first website</title>
-    <link href="styles.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <title>Hey Aiden</title>
     <style>
-      :root {
-        --main-color: #489ee3;
-        --default-border: 1px solid var(--main-color);
-      }
       body {
-        height: 1000vh;
-        margin: 50px;
-      }
-      form {
-        border: var(--default-border)
         display: flex;
-        flex-direction: column;
-        padding: 20px;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
       }
-      form:hover input:focus {
-        background-color: var(--main-color);
+      div {
+        background-color: teal;
+        width: 200px;
+        height: 200px;
+      }
+      @media screen and (max-width: 600px) {
+        div {
+          background-color: tomato;
+        }
+      }
+      @media screen and (max-width: 800px) {
+        div {
+          background-color: wheat;
+        }
       }
     </style>
-    <meta charset="utf-8" />
-    <meta name="description" content="This is my website" />
   </head>
 
   <body>
-    <div>
-      <form>
-        <input type="text" name="" id="" />
-        <input type="text" name="" id="" />
-        <input type="text" name="" id="" />
-      </form>
-    </div>
+    <div></div>
   </body>
 </html>
