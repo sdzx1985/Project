@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Let's Think about the fancier title -->
+    <title>Welcome to ADD Talk</title>
+  </head>
+  <body>
+    <div class="status-bar">
+      <div class="status-bar__column">
+        <span>
+          No Service
+          <i class="fas fa-wifi"></i>
+        </span>
+      </div>
+      <div class="status-bar__column">
+        <!-- will change to use date time  -->
+        <span>18:43</span>
+      </div>
+      <div class="status-bar__column">
+        <span>110%</span>
+        <i class="fas fa-battery-full fa-lg"></i>
+        <i class="fas fa-bolt"></i>
+      </div>
+    </div>
+
+    <header class="welcome-header">
+      <h1 class="welcome-header__title">Welcome to ADD Talk</h1>
+      <p class="welcome-header__text">
+        If you have a ADD Talk Account, log in with your email or phone number.
+      </p>
+    </header>
+
+    <!-- Will add required -->
+    <form id="login-form">
+      <input type="text" placeholder="Email or phone number" />
+      <input type="password" placeholder="Password" />
+      <input type="submit" value="Log In" />
+      <a href="#">Find ADD Account or Password</a>
+    </form>
+
+    <script
+      src="https://kit.fontawesome.com/f2ce00bbdb.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
