@@ -1,0 +1,47 @@
+body {
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+}
+
+#outside-div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  height: 1000px;
+}
+
+body > div > div {
+  border: solid 5px white;
+  margin: 10px;
+  width: 250px;
+  height: 450px;
+}
+
+body > div > div:first-child {
+  background-color: tomato;
+}
+
+body > div > div:nth-child(2) {
+  background-color: teal;
+}
+body > div > div:nth-child(3) {
+  background-color: burlywood;
+}
+body > div > div:last-child {
+  background-color: thistle;
+}
+
+.inside-white {
+  width: 130;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: -30px;
+}
