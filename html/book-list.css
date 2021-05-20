@@ -1,0 +1,244 @@
+@import "reset.css";
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.main-status-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-bar {
+  width: 100%;
+  background-color: #ffce32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 0px 80px 0px;
+  font-size: 30px;
+  font-weight: 600;
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+}
+
+.status-bar__col {
+  width: 33%;
+}
+
+.status-bar__col:first-child span {
+  margin-right: 5px;
+}
+
+.status-bar__col:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
+.status-bar__col:last-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.status-bar__col i {
+  margin: 0px 15px;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 115px;
+  height: 55px;
+  width: 95%;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0px 1px 5px 1px rgb(238, 235, 235);
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.search-bar span {
+  margin: 0px 35px;
+}
+
+.main-book {
+  margin-top: 30px;
+}
+
+.main-book__title {
+  margin: 20px 20px;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.main-book__cover {
+  display: flex;
+}
+
+.main-book__img {
+  margin-left: 20px;
+  width: 250px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.main-book__img img {
+  max-width: 100%;
+  border-radius: 15px;
+}
+
+.main-book__desc {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: auto;
+  margin: 0px 10px;
+}
+
+.main-book__desc__title {
+  height: 40%;
+}
+.main__title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.sub__title {
+  font-size: 17px;
+  font-weight: 300;
+  opacity: 0.2;
+  margin: 15px 10px;
+}
+
+.star__icon {
+  font-size: 15px;
+  color: #ffcf36;
+  margin-left: 10px;
+}
+.star__icon i {
+  margin-right: 5px;
+}
+.main-book__desc__title i:last-child {
+  color: #ededed;
+}
+
+.btn {
+  height: 60%;
+}
+
+.btn__sm {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.btn__sm button {
+  background-color: #ededed;
+  border: none;
+  padding: 10px 33px;
+  margin: 7px 5px;
+  font-size: 17px;
+  border-radius: 10px;
+}
+
+.btn__sm i {
+  width: 50px;
+  height: 50px;
+  background-color: #ffcf36;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+}
+
+.btn .btn__sm:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn .btn__sm:last-child button {
+  background-color: black;
+  color: white;
+  padding: 20px 50px;
+}
+
+.sub-book__rec {
+  margin: 20px 20px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.sub-book__outline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: scroll;
+}
+
+.sub-book__img img {
+  width: 110px;
+  height: 170px;
+  margin: 0px 15px;
+  border-radius: 20px;
+}
+
+.sub__star__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #ffcf36;
+  padding-top: 10px;
+}
+
+.sub__star__icon i {
+  margin: 0px 3px;
+}
+
+.sub__star__icon i:last-child {
+  color: #ededed;
+}
+
+.intro-authors__title {
+  margin: 10px 20px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.intro-authors__outline {
+  display: flex;
+}
+
+#nico-action img {
+  margin-left: 20px;
+  width: 160px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.intro__nico {
+  margin: 10px;
+}
+#its-nico {
+  line-height: 1.3;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.intro__nico__desc {
+  margin-top: 5px;
+  color: #b9b5b5;
+  line-height: 1.6;
+}
