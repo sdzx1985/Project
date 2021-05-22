@@ -18,7 +18,7 @@
       </div>
       <div class="status-bar__column">
         <!-- will change to use date time  -->
-        <span>18:43</span>
+        <span id="currentTime">18:43</span>
       </div>
       <div class="status-bar__column">
         <span>110%</span>
@@ -51,5 +51,11 @@
       src="https://kit.fontawesome.com/f2ce00bbdb.js"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      var today = new Date();
+      var time = today.getHours() + ":" + today.getMinutes();
+      document.getElementById("currentTime").value = time;
+    </script>
   </body>
 </html>
