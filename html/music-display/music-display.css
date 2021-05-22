@@ -83,6 +83,10 @@ body {
   color: white;
 }
 
+.status-bar__btn i {
+  margin-right: 7px;
+}
+
 .bot__section {
   display: flex;
   flex-direction: column;
