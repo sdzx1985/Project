@@ -19,7 +19,7 @@ with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
         # content = nuckname + "/" + str(randint(1000, 9999))
         content = "/".join([nickname, str(randint(1000, 9999))])
         msg.set_content(content)
-        
+
         smtp.send_message(msg)
-        
+
         print("Email from " + nickname)

@@ -31,10 +31,12 @@ with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
 
         if index <= max_val:
             title = "You are invited"
-            content = "Congratulation, {}. \nYou are invited this private event. Your invitation code is {}. Thank you for with us!".format(nickname, phone)
+            content = "Congratulation, {}. \nYou are invited this private event. Your invitation code is {}. Thank you for with us!".format(
+                nickname, phone)
         else:
             title = "Sorry, you were not invited."
-            content = "Sorry, {}. You were not invitated this event. \nHowever, you are on the waiting list.(waiting list number : {})".format(nickname, index - max_val)
+            content = "Sorry, {}. You were not invitated this event. \nHowever, you are on the waiting list.(waiting list number : {})".format(
+                nickname, index - max_val)
 
         msg = EmailMessage()
         msg["subject"] = title
